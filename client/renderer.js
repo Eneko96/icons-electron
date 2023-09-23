@@ -69,6 +69,38 @@ const addIcon = (file) => {
   });
 };
 
+const search = (input, iconList) => {
+  let ezFind = false;
+  if (!input.value) {
+    const icons = iconList.querySelectorAll(".icon-list-item");
+    for (let icon of icons) {
+      iconList.removeChild(icon);
+    }
+    gFilenames.slice(0, 60).forEach((file) => {
+      addIcon(file);
+    });
+    return;
+  }
+  const query = input.value.toLowerCase();
+  const icons = iconList.querySelectorAll(".icon-list-item");
+  for (let icon of icons) {
+    const text = icon.querySelector(".icon-text").textContent.toLowerCase();
+    if (text.indexOf(query) === -1) {
+      icon.style.display = "none";
+    } else {
+      icon.style.display = "flex";
+    }
+  }
+  if (!ezFind) {
+    gFilenames.forEach((file) => {
+      if (file.name.toLowerCase().indexOf(query) !== -1) {
+        addIcon(file);
+        ezFind = true;
+      }
+    });
+  }
+};
+
 window.electronAPI.on("svg-filenames", (filenames) => {
   gFilenames = filenames;
   filenames.slice(0, 60).forEach((file) => {
@@ -78,6 +110,17 @@ window.electronAPI.on("svg-filenames", (filenames) => {
 
 window.addEventListener("DOMContentLoaded", () => {
   const iconList = document.querySelector(".icon-list");
+
+  const searchInput = document.querySelector(".search-input");
+  let debounce;
+  searchInput.addEventListener("input", () => {
+    if (debounce) {
+      clearTimeout(debounce);
+    }
+    debounce = setTimeout(() => {
+      search(searchInput, iconList);
+    }, 250);
+  });
 
   if (!iconList) {
     console.error("Icon list not found");

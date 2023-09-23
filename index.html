@@ -7,13 +7,55 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'; style-src 'self';"
     />
-    <title>Hello World!</title>
+    <title>Icon pack</title>
     <link rel="stylesheet" href="./client/styles.css" />
   </head>
   <body>
     <h1 class="header">My Icon List!</h1>
 
     <div class="container">
+      <div class="search-container">
+        <label class="icon-search">
+          <div class="inner-container">
+            <div class="search-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-search-icon icon-tabler icon-tabler-search"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 10m-7 0a7 7 0 1 0 14 0 7 7 0 1 0-14 0"></path>
+                <path d="M21 21l-6-6"></path>
+              </svg>
+            </div>
+            <div class="search-box">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Search for an icon..."
+              />
+            </div>
+            <!--<div>
+              <div>
+                <span>Category</span>
+                <span>All</span>
+                <select>
+                  <option>1</option>
+                </select>
+              </div>
+            </div>
+            <div></div>
+            <div></div>-->
+          </div>
+        </label>
+      </div>
       <div class="icon-list"></div>
     </div>
     <!-- You can also require other files to run in this process -->
