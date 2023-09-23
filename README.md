@@ -11,5 +11,7 @@ This way, as is something I created myself, there is no way to forget I have som
 
 How is simple, is just some vanilla js and a bunch of HTML nothing else, and with the help of electron to build the desktop application.
 
-If you ask why I did it with electron, I wanted to have it on my desktop offline as I see it handier for this usecase. I thought on doing it in flutter or even Swift, but I wasn't
-in the mood of learning all the necessary things for doing it, but I may do it at some point if I get bored of doing this in Electr learning all the necessary things for doing it, but I may do it at some point if I get bored of doing this in Electron..
+If you ask why I did it with electron, I wanted to have it on my desktop offline as I see it handier for this use case.
+I thought on doing it in flutter or even Swift, but I wasn't in the mood of learning all the necessary things for it.
+
+I may do it at some point if I get bored of doing this in Electron.
