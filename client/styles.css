@@ -1,0 +1,18 @@
+.icon-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.icon-list > * {
+  border: 1px solid grey;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: border-radius 0.5s ease-in;
+}
+
+.icon-list > *:hover {
+  border: 1px solid blue;
+  transition: border-color 0.5s ease-in;
+}
