@@ -15,7 +15,6 @@ const createWindow = () => {
   win.loadFile("index.html");
 
   win.webContents.on("did-finish-load", () => {
-    console.log("hi");
     win.webContents.send("svg-filenames", fileNames("svg"));
   });
 };
