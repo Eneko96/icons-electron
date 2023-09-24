@@ -15,7 +15,7 @@ const createWindow = () => {
 
   try {
     if (process.platform === "darwin") {
-      const iconPath = path.join(__dirname, "../public/Emacs.icns");
+      const iconPath = path.join(__dirname, "../public/icon.png");
 
       // Check if the file exists before setting it as an icon
       if (fs.existsSync(iconPath)) {
