@@ -101,6 +101,30 @@ const search = (input, iconList) => {
   }
 };
 
+const goUpConstruct = () => {
+  const goBackUp = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const canGoBackUp = () => {
+    if (window.scrollY > 100) {
+      return true;
+    }
+  };
+
+  const goBackUpButton = $(".go-back-up");
+
+  window.addEventListener("scroll", () => {
+    if (canGoBackUp()) {
+      goBackUpButton.classList.add("show");
+      goBackUpButton.addEventListener("click", goBackUp);
+    } else {
+      goBackUpButton.classList.remove("show");
+      goBackUpButton.removeEventListener("click", goBackUp);
+    }
+  });
+};
+
 window.electronAPI.on("svg-filenames", (filenames) => {
   gFilenames = filenames;
   filenames.slice(0, 60).forEach((file) => {
@@ -109,6 +133,7 @@ window.electronAPI.on("svg-filenames", (filenames) => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
+  goUpConstruct();
   const iconList = document.querySelector(".icon-list");
 
   const searchInput = document.querySelector(".search-input");
