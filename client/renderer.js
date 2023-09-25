@@ -34,7 +34,7 @@ const addIcon = (file) => {
   svg.className = "svg-icon";
   const text = document.createElement("span");
   text.className = "icon-text";
-  text.textContent = file.name;
+  text.textContent = file.name.replaceAll("-", " ");
   listItem.appendChild(svg);
   listItem.appendChild(text);
 
@@ -112,7 +112,7 @@ const search = (input, iconList) => {
   }
   if (!ezFind) {
     gFilenames.forEach((file) => {
-      if (file.name.toLowerCase().indexOf(query) !== -1) {
+      if (file.name.toLowerCase().indexOf(query.replaceAll(" ", "-")) !== -1) {
         addIcon(file);
         ezFind = true;
       }
