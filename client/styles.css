@@ -1,6 +1,7 @@
 :root {
   --icon-min-width: 8rem;
   --color-bg: rgb(25, 25, 36);
+  --scroll-color: rgba(37, 37, 53, 1);
   --color-border-light: rgb(33, 32, 41);
   --color-border-dark: rgb(17, 17, 26);
   --color-primary: rgb(32, 107, 196);
@@ -29,6 +30,28 @@
 body {
   background-color: var(--color-bg);
   color: white;
+}
+
+body.windows-os {
+  scrollbar-color: red;
+  scrollbar-width: thin;
+}
+
+body.windows-os::-webkit-scrollbar {
+  width: 12px;
+  position: absolute;
+}
+
+body.windows-os::-webkit-scrollbar-thumb {
+  transition: background-color .3s ease-in;
+  background-color: var(--scrollbar-thumb-color, transparent);
+  opacity: var(--scrollbar-thumb-opacity, transparent);
+  border-radius: 20px;
+  border: 3px solid var(--color-bg);
+}
+
+body.windows-os::-webkit-scrollbar-button {
+  display: none;
 }
 
 .header {
@@ -134,7 +157,7 @@ body {
   min-width: 0;
 }
 
-.search-icon > svg {
+.search-icon>svg {
   pointer-events: none;
   color: var(--color-muted);
   width: 1.5rem;

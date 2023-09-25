@@ -1,6 +1,25 @@
 const $ = (selector) => document.querySelector(selector);
 let count = 60;
 let gFilenames = [];
+let isWindows = false;
+
+if (/Windows/.test(navigator.userAgent)) {
+  document.body.classList.add('windows-os');
+  isWindows = true;
+}
+
+const scrollbarWindows = () => {
+  let scrollbarTimeout;
+
+  document.body.classList.add('windows-os');
+  clearTimeout(scrollbarTimeout);
+
+  document.body.style.setProperty('--scrollbar-thumb-color', 'var(--scroll-color)');
+
+  scrollbarTimeout = setTimeout(() => {
+    document.body.style.setProperty('--scrollbar-thumb-color', 'transparent')
+  }, 1000);
+}
 
 const addIcon = (file) => {
   const iconList = $(".icon-list");
@@ -115,6 +134,7 @@ const goUpConstruct = () => {
   const goBackUpButton = $(".go-back-up");
 
   window.addEventListener("scroll", () => {
+    if (isWindows) scrollbarWindows();
     if (canGoBackUp()) {
       goBackUpButton.classList.add("show");
       goBackUpButton.addEventListener("click", goBackUp);
