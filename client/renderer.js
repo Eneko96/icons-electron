@@ -176,6 +176,15 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   if (!iconList) {
+    Toastify({
+      text: "Icon list not found",
+      duration: 3000,
+      gravity: "bottom",
+      position: "right",
+      style: {
+        background: "linear-gradient(to right, #212029, #35343D)",
+      },
+    });
     console.error("Icon list not found");
     return;
   }
@@ -184,11 +193,9 @@ window.addEventListener("DOMContentLoaded", () => {
     const intersectionObserver = new IntersectionObserver((entries) => {
       for (let entry of entries) {
         if (entry.isIntersecting) {
-          console.log("Last element is now visible!");
           count = count + 60;
-          gFilenames.slice(count, count + 60).forEach((file) => addIcon(file));
           intersectionObserver.disconnect();
-          handleIntersection(iconList.lastElementChild);
+          gFilenames.slice(count, count + 60).forEach((file) => addIcon(file));
           break;
         }
       }
@@ -200,14 +207,12 @@ window.addEventListener("DOMContentLoaded", () => {
   const mutationObserver = new MutationObserver((mutations) => {
     for (let mutation of mutations) {
       if (mutation.addedNodes.length) {
-        const lastElement = iconList.lastElementChild;
-        if (lastElement) {
-          handleIntersection(lastElement);
-          break;
-        }
+        lastElement = mutation.addedNodes[mutation.addedNodes.length - 1];
       }
     }
+    if (lastElement) {
+      handleIntersection(lastElement);
+    }
   });
-
   mutationObserver.observe(iconList, { childList: true });
 });

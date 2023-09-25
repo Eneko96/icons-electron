@@ -5,10 +5,17 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self';"
+      content="default-src 'self';
+        script-src 'self' https://cdn.jsdelivr.net/npm/toastify-js;
+        style-src 'self' https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css;"
     />
     <title>Icon pack</title>
     <link rel="stylesheet" href="./client/styles.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
   </head>
   <body>
     <h1 class="header">Super Icon List</h1>
@@ -77,7 +84,10 @@
       </div>
       <div class="icon-list"></div>
     </div>
-    <!-- You can also require other files to run in this process -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
     <script src="./client/renderer.js"></script>
   </body>
 </html>
