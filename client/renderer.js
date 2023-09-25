@@ -4,22 +4,25 @@ let gFilenames = [];
 let isWindows = false;
 
 if (/Windows/.test(navigator.userAgent)) {
-  document.body.classList.add('windows-os');
+  document.body.classList.add("windows-os");
   isWindows = true;
 }
 
 const scrollbarWindows = () => {
   let scrollbarTimeout;
 
-  document.body.classList.add('windows-os');
+  document.body.classList.add("windows-os");
   clearTimeout(scrollbarTimeout);
 
-  document.body.style.setProperty('--scrollbar-thumb-color', 'var(--scroll-color)');
+  document.body.style.setProperty(
+    "--scrollbar-thumb-color",
+    "var(--scroll-color)",
+  );
 
   scrollbarTimeout = setTimeout(() => {
-    document.body.style.setProperty('--scrollbar-thumb-color', 'transparent')
+    document.body.style.setProperty("--scrollbar-thumb-color", "transparent");
   }, 1000);
-}
+};
 
 const addIcon = (file) => {
   const iconList = $(".icon-list");
@@ -66,7 +69,7 @@ const addIcon = (file) => {
     });
 
     dialog.appendChild(copyButton);
-    title.textContent = file.name;
+    title.textContent = file.name.replaceAll("-", " ");
     title.className = "dialog-title";
 
     dialog.appendChild(title);
@@ -79,10 +82,15 @@ const addIcon = (file) => {
 
     document.body.appendChild(dialog);
     dialog.showModal();
+    requestAnimationFrame(() => {
+      dialog.classList.add("show");
+    });
 
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) {
         dialog.close();
+        dialog.classList.remove("show");
+        dialog.remove();
       }
     });
   });

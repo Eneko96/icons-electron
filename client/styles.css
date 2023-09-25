@@ -43,7 +43,7 @@ body.windows-os::-webkit-scrollbar {
 }
 
 body.windows-os::-webkit-scrollbar-thumb {
-  transition: background-color .3s ease-in;
+  transition: background-color 0.3s ease-in;
   background-color: var(--scrollbar-thumb-color, transparent);
   opacity: var(--scrollbar-thumb-opacity, transparent);
   border-radius: 20px;
@@ -157,7 +157,7 @@ body.windows-os::-webkit-scrollbar-button {
   min-width: 0;
 }
 
-.search-icon>svg {
+.search-icon > svg {
   pointer-events: none;
   color: var(--color-muted);
   width: 1.5rem;
@@ -242,6 +242,14 @@ body.windows-os::-webkit-scrollbar-button {
   border-radius: 8px;
   padding: 2rem;
   overflow: inherit;
+  transform: scale(0.1);
+  transition: 0.2s transform;
+  visibility: hidden;
+}
+
+.dialog.show {
+  visibility: visible;
+  transform: scale(1);
 }
 
 .dialog:focus {
@@ -253,8 +261,10 @@ body.windows-os::-webkit-scrollbar-button {
 }
 
 .dialog-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .dialog-content {
