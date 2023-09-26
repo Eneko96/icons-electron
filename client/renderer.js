@@ -87,7 +87,7 @@ const addIcon = (file) => {
     });
 
     dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) {
+      if (event.target === event.currentTarget) {
         dialog.close();
         dialog.classList.remove("show");
         dialog.remove();
